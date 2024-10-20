@@ -1,13 +1,24 @@
 import React, {useState} from 'react';
-import {Text, View, Image, Button, TextInput, Alert, ScrollView} from 'react-native';
+import {Text, View, Image, Button, TextInput, Alert, ScrollView, AsyncStorage} from 'react-native';
+
 
 const Elemento = props => {
     const [descripcion,setDescripcion] = useState('');
-    const [labelDescripcion,setLabelDescripcion] = useState('');
+    const [labelDescripcion,setLabelDescripcion] = useState('◎');
     const [completado,setCompletado] = useState(false);
-    const btnHandler = () => {
-      setCompletado(true);
-      console.log(completado);
+    
+    const completarTarea = () => {
+      setCompletado(!completado);
+      if (completado==true){
+        setLabelDescripcion('◉')
+      }else{
+        setLabelDescripcion('◎')
+      }
+      
+    }
+
+    const addElemento = () => {
+      console.log('añadida tarea...')
     }
     
 
@@ -24,9 +35,9 @@ const Elemento = props => {
         // defaultValue={nombreGato}
       />
         <Button onPress={() => {
-          btnHandler();
+          completarTarea();
         }}        
-        title = {!labelDescripcion ?'Completar tarea':labelDescripcion}
+        title = {labelDescripcion}
         />
       </View>
     );
@@ -55,6 +66,11 @@ const Elemento = props => {
             <Elemento key={index}/>
           ))}
         </ScrollView>
+        <Button onPress={() => {
+          addElemento();
+        }}           
+        title = {'Añadir tareas'}     
+        />
       </View>
     );
   };
