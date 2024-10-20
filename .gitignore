@@ -33,3 +33,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+#otrascosas
+%ProgramData%\Microsoft\Windows\UUS\State\_active.uusver

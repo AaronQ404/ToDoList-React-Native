@@ -26,7 +26,7 @@ const Elemento = props => {
         <Button onPress={() => {
           btnHandler();
         }}        
-        title = {!labelDescripcion ?'Dame una Tarea':labelDescripcion}
+        title = {!labelDescripcion ?'Completar tarea':labelDescripcion}
         />
       </View>
     );
